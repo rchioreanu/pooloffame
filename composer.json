@@ -1,0 +1,15 @@
+{
+    "name": "rchioreanu/pooloffame",
+    "description": "A simple app to allow the piscine students to choose the best one",
+    "type": "project",
+    "require": {
+        "league/oauth2-client": "^2.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rares Chioreanu",
+            "email": "rares.davidchioreanu@gmail.com"
+        }
+    ]
+}
