@@ -22,7 +22,7 @@ class Users extends Votes
             echo $e->getMessage();
         }
     }
-    private function printProfile($login, $category)
+    private function printProfile($login, $category, $votes)
     {
         switch ($category) {
         case 'sleeper':
@@ -70,7 +70,7 @@ class Users extends Votes
                         '.$title.'
                     </div>
                     <div class="desc">'.$login.'</div>
-
+                    <div class="desc">'.$votes.' vote(s)</div>
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@ class Users extends Votes
             $statement->execute();
             $rows = $statement->fetchAll();
             foreach ($rows as $elem) {
-                $this->printProfile($elem[$category], $category);
+                $this->printProfile($elem[$category], $category, $elem['occurrences']);
                 return ;
             }
         }
