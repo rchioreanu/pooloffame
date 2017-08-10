@@ -6,7 +6,7 @@ class Users extends Votes
     public function login($username, $passwd)
     {
         $password = hash('whirlpool', $passwd);
-        $query = "SELECT * FROM users WHERE username LIKE '$username' AND password LIKE '$password';";
+        $query = "SELECT * FROM viewers WHERE username LIKE '$username' AND password LIKE '$password';";
         try {
             $statement = $this->DB->prepare($query);
             $statement->execute();
@@ -63,7 +63,7 @@ class Users extends Votes
             <div class="col-lg-3 col-sm-6">
             <div class="card hovercard">
                 <div class="cardheader" style="background-image: \'\'">
-                <a href="https://cdn.intra.42.fr/users/medium_'.$login.'.jpg" download="'.$login.'"><img src="https://cdn.intra.42.fr/users/medium_'.$login.'.jpg" /></a>
+                <a href="https://cdn.intra.42.fr/users/medium_'.$login.'.JPG" download="'.$login.'"><img src="https://cdn.intra.42.fr/users/medium_'.$login.'.JPG" /></a>
                 </div>
                 <div class="info">
                     <div class="title">

@@ -15,17 +15,20 @@ class Votes
             echo $e->getMessage();
         }
     }
-    public function setVote($voter, $login, $attr)
+    public function setVote($voter1, $login1, $attr1)
     {
-        $query = "INSERT INTO votes(voter, `$attr`) VALUES('$voter', '$login')
-            ON DUPLICATE KEY UPDATE $attr='$login';";
-        try {
-            $statement = $this->DB->prepare($query);
-            $statement->execute();
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+      $voter = trim($voter1);
+      $login = trim($login1);
+      $attr = trim($attr1);
+      $query  = "INSERT INTO votes(voter, `$attr`) VALUES('$voter', '$login')
+      ON DUPLICATE KEY UPDATE `$attr`='$login';";
+      $statement = $this->DB->prepare($query);
+      try {
+        $statement->execute();
+      } catch (PDOException $e) {
+        echo $e->getMessage();
+      }
+
     }
     public function getVote($voter, $category)
     {
@@ -40,6 +43,38 @@ class Votes
         catch (PDOException $e) {
             echo $e->getMessage();
         }
+    }
+    public function getCandidates()
+    {
+      $query = "SELECT * FROM students WHERE 1;";
+      foreach ($this->DB->query($query) as $elem) {
+        echo '<option value="'.$elem['login'].'">'.$elem['login'].'</option>';
+      }
+    }
+    public function getPhotos()
+    {
+      $query = "SELECT * FROM students WHERE 1;";
+      try {
+      foreach ($this->DB->query($query) as $elem) {
+        echo '
+        <div class="col-lg-3 col-sm-6">
+        <div class="card hovercard">
+        <div class="cardheader" style="background-image: \'\'">
+        <a href="https://cdn.intra.42.fr/users/medium_'.$elem['login'].'.JPG" download="'.$elem['login'].'"><img src="https://cdn.intra.42.fr/users/medium_'.$elem['login'].'.JPG" /></a>
+        </div>
+        <div class="info">
+        <div class="title">
+        '.$elem['login'].'
+        </div>
+
+        </div>
+        </div>
+        </div>
+        ';
+      }
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
     }
 }
 ?>

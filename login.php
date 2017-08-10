@@ -21,6 +21,7 @@ if (!isset($_GET['code'])) {
 
     // Get the state generated for you and store it to the session.
     $_SESSION['oauth2state'] = $provider->getState();
+    echo $provider->getState();
 
     // Redirect the user to the authorization URL.
     header('Location: ' . $authorizationUrl);
@@ -29,7 +30,9 @@ if (!isset($_GET['code'])) {
     // Check given state against previously stored one to mitigate CSRF attack
 } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
 
+    var_dump($provider);
     unset($_SESSION['oauth2state']);
+    var_dump($_SESSION);
     exit('Invalid state');
 
 } else {
