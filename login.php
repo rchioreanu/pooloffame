@@ -3,8 +3,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 session_start();
 $provider = new \League\OAuth2\Client\Provider\GenericProvider([
-    'clientId'                => '6ff40f6ae0761e1c6f95596a166a29bccfe09d806ea92c207715e8e692b002a8',
-    'clientSecret'            => 'd6dfae4f4c3397ded08b97db372b58c3dbd47efb982e5fecdd7272d99eacd844',
+    'clientId'                => 'super secret id',
+    'clientSecret'            => 'even more secret',
     'redirectUri'             => 'http://localhost:8080/pooloffame/login.php',
     'urlAuthorize'            => 'https://api.intra.42.fr/oauth/authorize',
     'urlAccessToken'          => 'https://api.intra.42.fr/oauth/token',
